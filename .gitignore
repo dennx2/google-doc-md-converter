@@ -1,0 +1,20 @@
+# Ignore Clasp configuration files
+.clasp.json
+
+# Ignore Google Apps Script project settings
+appsscript.json
+
+# Ignore deployment files
+*.gs.deploy
+
+# Ignore node_modules directory if you are using npm packages in your project
+node_modules/
+
+# Ignore any sensitive or environment-specific configuration files
+config.json
+
+# Ignore any build or compiled files
+*.js.map
+
+# Ignore any local development files
+.vscode/
