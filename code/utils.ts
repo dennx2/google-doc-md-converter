@@ -46,3 +46,26 @@ function getFolderNames(root: GoogleAppsScript.Drive.Folder) {
 
   return folderNames;
 }
+
+function cleanUpFolders(
+  root: GoogleAppsScript.Drive.Folder,
+  total: number = 5
+) {
+  const names = getFolderNames(root);
+
+  // Sort folder names by numbers in descending order
+  names.sort(function (a: string, b: string) {
+    const [numA, numB] = [a, b].map(fileName =>
+      parseInt(fileName.split("-").pop() || "0")
+    );
+    return numB - numA;
+  });
+
+  // Trash old files
+  names.forEach((folderName, index) => {
+    if (index > total - 1) {
+      const folder = getFolder(folderName, false, root);
+      folder?.setTrashed(true);
+    }
+  });
+}

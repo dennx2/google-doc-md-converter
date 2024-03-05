@@ -25,8 +25,10 @@ function main() {
     return;
   }
 
-  const folderNames = getFolderNames(newFolder);
+  /* Clean up old folders */
+  cleanUpFolders(newFolder);
 
+  /* Creating a new subfolder */
   const subFolder = getFolder(`Output-${getTimeStamp()}`, true, newFolder);
   if (!subFolder) {
     Logger.log("Unable to create subfolder.");
